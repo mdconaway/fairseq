@@ -713,9 +713,7 @@ class XMTransformerModel(FairseqEncoderDecoderModel):
             if args.w2v_path:
                 state = checkpoint_utils.load_checkpoint_to_cpu(args.w2v_path)
                 if state.get("cfg") is not None:
-                    encoder_embed_dim = state["cfg"]._content["model"][
-                        "encoder_embed_dim"
-                    ]
+                    encoder_embed_dim = state["cfg"]["model"].encoder_embed_dim
                 elif state.get("args") is not None:
                     encoder_embed_dim = state["args"].encoder_embed_dim
                 else:
