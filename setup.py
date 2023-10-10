@@ -150,7 +150,7 @@ def do_setup(package_data):
             "bitarray",
             "torchaudio>=0.8.0",
             "boto3",
-            "scikit-learn==0.24.1",
+            "scikit-learn==1.3.1",
             "scipy",
             "submitit",
             "soundfile",
