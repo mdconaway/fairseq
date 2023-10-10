@@ -24,7 +24,7 @@ install_dep_common: &install_dep_common
         source activate fairseq
         pip install --upgrade setuptools
         pip install bitarray boto3 deepspeed editdistance fastBPE iopath ipdb ipython pyarrow pytest sacremoses sentencepiece subword-nmt hydra-core==1.2.0 omegaconf==2.2.2
-        pip install statsmodels==0.12.2 more_itertools submitit boto3 editdistance transformers sklearn scipy cython Jinja2==2.11.3
+        pip install statsmodels==0.12.2 more_itertools submitit boto3 editdistance transformers scikit-learn scipy cython Jinja2==2.11.3
         pip install --progress-bar off pytest
         pip install --progress-bar off fairscale
         pip install -i https://test.pypi.org/simple/ bitsandbytes-cuda112 -U
