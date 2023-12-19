@@ -148,7 +148,7 @@ def do_setup(package_data):
             "tqdm",
             "typing_extensions",
             "bitarray",
-            "torchaudio==2.0.0",
+            "torchaudio==2.0.1",
             "boto3",
             "scikit-learn==1.3.1",
             "scipy",
