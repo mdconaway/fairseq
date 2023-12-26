@@ -424,7 +424,8 @@ class Wav2VecEncoder(FairseqEncoder):
         task = tasks.setup_task(w2v_args.task)
         model = task.build_model(w2v_args.model, from_checkpoint=True)
 
-        model.remove_pretraining_modules()
+        if hasattr(model, "remove_pretraining_modules"):
+            model.remove_pretraining_modules()
 
         if state is not None and not cfg.no_pretrained_weights:
             self.load_model_weights(state, model, cfg)
