@@ -400,8 +400,16 @@ class Wav2VecEncoder(FairseqEncoder):
             if isinstance(w2v_args, Namespace):
                 cfg.w2v_args = w2v_args = convert_namespace_to_omegaconf(w2v_args)
 
-        model_normalized = w2v_args.task.get(
-            "normalize", w2v_args.model.get("normalize", False)
+        temp_w2v_args_task = w2v_args.task
+        temp_w2v_args_model = w2v_args.model
+        if isinstance(temp_w2v_args_task, Namespace):
+            temp_w2v_args_task = convert_namespace_to_omegaconf(temp_w2v_args_task)
+        
+        if isinstance(temp_w2v_args_model, Namespace):
+            temp_w2v_args_model = convert_namespace_to_omegaconf(temp_w2v_args_model)
+
+        model_normalized = temp_w2v_args_task.get(
+            "normalize", temp_w2v_args_model.get("normalize", False)
         )
         assert cfg.normalize == model_normalized, (
             "Fine-tuning works best when data normalization is the same. "

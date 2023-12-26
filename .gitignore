@@ -139,3 +139,4 @@ wandb/
 nohup.out
 multirun
 outputs
+temp_dir
