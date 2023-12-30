@@ -162,6 +162,8 @@ def do_setup(package_data):
             "sacremoses",
             "subword-nmt",
             "fairscale",
+            "overrides",
+            "pandas"
         ],
         dependency_links=dependency_links,
         packages=find_packages(

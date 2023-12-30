@@ -13,7 +13,11 @@ import os
 import sys
 import warnings
 from itertools import accumulate
-from typing import TYPE_CHECKING, Callable, Dict, List, Optional
+from typing import TYPE_CHECKING, Final, Callable, Dict, List, Optional
+from packaging import version
+from packaging.version import InvalidVersion, Version
+from dataclasses import is_dataclass
+from typing import Any, List, MutableMapping
 
 import numpy as np
 import torch
@@ -36,6 +40,16 @@ try:
 except ImportError:
     xm = None
 
+
+
+def _get_torch_version() -> Version:
+    try:
+        return version.parse(torch.__version__)
+    except InvalidVersion:
+        return Version("0.0.0")
+
+
+TORCH_VERSION: Final = _get_torch_version()
 
 logger = logging.getLogger(__name__)
 
@@ -998,3 +1012,62 @@ def remove_prefix(text: str, prefix: str):
     if text.startswith(prefix):
         return text[len(prefix) :]
     return text
+
+
+def is_pt21_or_greater() -> bool:
+    return TORCH_VERSION.major >= 2 and TORCH_VERSION.minor >= 1
+
+
+def update_dataclass(obj: Any, overrides: MutableMapping[str, Any]) -> None:
+    """Update the specified data class with the data contained in ``overrides``.
+
+    :param obj:
+        A :type:`dataclasses.dataclass` object.
+    :param overrides:
+        A dictionary containing the data to set in ``obj``.
+    """
+    if not is_dataclass(obj):
+        raise TypeError(
+            f"`obj` must be a `dataclass`, but is of type `{type(obj)}` instead."
+        )
+
+    leftovers: List[str] = []
+
+    _do_update_dataclass(obj, overrides, leftovers, path=[])
+
+    if leftovers:
+        leftovers.sort()
+
+        raise ValueError(
+            f"The following keys contained in `overrides` do not exist in `obj`: {leftovers}"
+        )
+
+
+def _do_update_dataclass(
+    obj: Any, overrides: MutableMapping[str, Any], leftovers: List[str], path: List[str]
+) -> None:
+    for name, value in obj.__dict__.items():
+        try:
+            override = overrides.pop(name)
+        except KeyError:
+            continue
+
+        # Recursively traverse child dataclasses.
+        if override is not None and is_dataclass(value):
+            if not isinstance(override, MutableMapping):
+                p = ".".join(path + [name])
+
+                raise TypeError(
+                    f"The key '{p}' must be of a mapping type (e.g. `dict`), but is of type `{type(override)}` instead."
+                )
+
+            path.append(name)
+
+            _do_update_dataclass(value, override, leftovers, path)
+
+            path.pop()
+        else:
+            setattr(obj, name, override)
+
+    if overrides:
+        leftovers += [".".join(path + [name]) for name in overrides]
