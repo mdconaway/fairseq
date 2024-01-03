@@ -1,6 +1,7 @@
 import logging
 from typing import Union
 import torch
+from torch import Tensor, nn
 from torch.nn.functional import layer_norm
 import torchaudio
 from torchaudio.transforms import Resample
@@ -9,15 +10,13 @@ from fairseq.models.unit_extractor.wav2vec2_loaders import (
     Wav2Vec2Model,
     load_wav2vec2_model,
 )
-from fairseq.nn.padding import get_seqs_and_padding_mask
-from fairseq.typing import DataType, Device, CPU
-from torch import Tensor, nn
-
 from fairseq.models.unit_extractor.kmeans import KmeansModel
 from fairseq.models.unit_extractor.wav2vec2_layer_output import (
     Wav2Vec2LayerOutputModel,
 )
 from fairseq.models.vocoder.vocoder import load_vocoder_36, Vocoder
+from fairseq.nn.padding import get_seqs_and_padding_mask
+from fairseq.typing import DataType, Device, CPU
 from fairseq.utils import move_to_cuda
 
 logging.basicConfig(

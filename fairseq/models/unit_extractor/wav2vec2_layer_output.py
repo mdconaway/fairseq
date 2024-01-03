@@ -1,8 +1,3 @@
-# Copyright (c) Meta Platforms, Inc. and affiliates.
-# All rights reserved.
-#
-# This source code is licensed under the license found in the
-# MIT_LICENSE file in the root directory of this source tree.
 from typing import Optional
 
 import torch
@@ -13,7 +8,6 @@ from fairseq.models.wav2vec2 import (
     Wav2Vec2EncoderConfig,
     Wav2Vec2Frontend,
     Wav2Vec2Model,
-    #    wav2vec2_arch,
 )
 from fairseq.nn.padding import PaddingMask
 from fairseq.nn.transformer import TransformerEncoder, TransformerNormOrder
@@ -53,7 +47,6 @@ def _encoder_xlsr2_1b_v2() -> Wav2Vec2EncoderConfig:
     )
 
 
-# @wav2vec2_arch("xlsr2_1b_v2")
 def _xlsr2_1b_v2() -> Wav2Vec2Config:
     encoder_config = _encoder_xlsr2_1b_v2()
 
