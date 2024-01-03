@@ -1,8 +1,9 @@
 from __future__ import annotations
-from typing import Any, Optional
+from typing import Any, Optional, Tuple
 import torch
 from torch import Tensor
 from fairseq.typing import Device
+from fairseq.data import SequenceData
 
 
 class PaddingMask:
@@ -105,3 +106,27 @@ def apply_padding_mask(
 
     return seqs.where(m, pad_value)
 
+
+def get_seqs_and_padding_mask(
+    data: SequenceData, device: Optional[Device] = None
+) -> Tuple[Tensor, Optional[PaddingMask]]:
+    """Return the sequences along with their padding mask from ``data``.
+
+    :returns:
+        - The sequences (i.e. `data["seqs"]`)
+        - The padding mask of the returned sequences.
+    """
+    seqs = data["seqs"]
+
+    if device is not None:
+        seqs = seqs.to(device)
+
+    if not data["is_ragged"]:
+        return seqs, None
+
+    seq_lens = data["seq_lens"]
+
+    if device is not None:
+        seq_lens = seq_lens.to(device)
+
+    return seqs, PaddingMask(seq_lens, batch_seq_len=seqs.size(1))

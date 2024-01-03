@@ -7,7 +7,7 @@ import torch
 from torch import Tensor
 
 from tqdm import tqdm
-from seamless_communication.models.unit_extractor import UnitExtractor
+from fairseq.models.unit_extractor.unit_extractor import UnitExtractor
 from examples.textless_nlp.gslm.speech2unit.clustering.utils import get_audio_files
 
 logging.basicConfig(level=logging.INFO)
@@ -25,16 +25,16 @@ def main():
         help="Manifest file containing the root dir and file names",
     )
     parser.add_argument(
-        "--kmeans_uri",
+        "--kmeans_path",
         type=str,
-        help="URL path to the K-Means model.",
-        default="https://dl.fbaipublicfiles.com/seamlessM4T/models/unit_extraction/kmeans_10k.npy",
+        help="File path to the K-Means 10k model.",
+        default="kmeans_10k.npy",
     )
     parser.add_argument(
-        "--model_name",
+        "--xlsr_path",
         type=str,
-        help="Feature extraction model name (`xlsr2_1b_v2`)",
-        default="xlsr2_1b_v2",
+        help="Feature extraction model path to the 'xlsr2_1b_v2' model checkpoint",
+        default="xlsr2_1b_v2.pt",
     )
     parser.add_argument(
         "--out_layer_number",
@@ -63,7 +63,7 @@ def main():
 
     root_dir, fnames, _ = get_audio_files(args.manifest_path)
 
-    unit_extractor = UnitExtractor(args.model_name, args.kmeans_uri, device=device)
+    unit_extractor = UnitExtractor(args.xlsr_path, args.kmeans_path, device=device)
 
     os.makedirs(os.path.dirname(args.out_quantized_file_path), exist_ok=True)
     logger.info(f"Writing quantized predictions to {args.out_quantized_file_path}")

@@ -24,7 +24,7 @@ from .transformer_legacy import (
     transformer_wmt_en_de_big_t2t,
 )
 from .transformer_base import TransformerModelBase, Embedding
-
+from .frontend import TransformerFrontend
 
 __all__ = [
     "TransformerModelBase",
@@ -33,6 +33,7 @@ __all__ = [
     "TransformerDecoderBase",
     "TransformerEncoder",
     "TransformerEncoderBase",
+    "TransformerFrontend",
     "TransformerModel",
     "Embedding",
     "fsdpwrap_expert",
