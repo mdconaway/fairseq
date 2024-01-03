@@ -110,7 +110,6 @@ class MaskedLMConfig(FairseqDataclass):
 
 @register_task("masked_lm", dataclass=MaskedLMConfig)
 class MaskedLMTask(FairseqTask):
-
     cfg: MaskedLMConfig
 
     """Task for training masked language models (e.g., BERT, RoBERTa)."""

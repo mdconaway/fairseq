@@ -780,7 +780,6 @@ class RelativePositionalEncoding(Module):
         return f"encoding_dim={self.encoding_dim}, max_seq_len={self.max_seq_len}"
 
 
-
 @final
 class CustomAttentionMask(AttentionMask):
     """Represents a custom attention mask provided by the user."""
@@ -966,7 +965,6 @@ class RelativePositionSDPA(SDPA):
         return f"model_dim={self.model_dim}, num_heads={self.num_heads}"
 
 
-
 class AttentionState(IncrementalState):
     """Holds the projected keys and values of a :class:`MultiheadAttention`
     module during incremental decoding."""
@@ -1011,7 +1009,6 @@ class AttentionStateFactory(Protocol):
         """
 
 
-
 def init_qkv_projection(proj: Linear) -> None:
     """Initialize ``proj`` as a multi-head attention input projection."""
     # Empirically observed the convergence to be much better with the scaled
@@ -1020,7 +1017,6 @@ def init_qkv_projection(proj: Linear) -> None:
 
     if proj.bias is not None:
         nn.init.zeros_(proj.bias)
-
 
 
 def init_output_projection(proj: Linear) -> None:
@@ -1507,7 +1503,6 @@ class FeedForwardNetwork(Module, ABC):
     def extra_repr(self) -> str:
         """:meta private:"""
         return f"model_dim={self.model_dim}"
-
 
 
 @final

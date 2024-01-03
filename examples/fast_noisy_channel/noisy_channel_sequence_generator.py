@@ -309,7 +309,6 @@ class NoisyChannelSequenceGenerator(object):
                     score = -math.inf
 
                 def get_hypo():
-
                     if attn_clone is not None:
                         # remove padding tokens from attn scores
                         hypo_attn = attn_clone[i][nonpad_idxs[sent]]

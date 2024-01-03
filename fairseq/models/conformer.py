@@ -18,7 +18,6 @@ from fairseq.nn.normalization import LayerNorm, StandardLayerNorm
 from fairseq.typing import DataType, Device, finaloverride
 
 
-
 class ConformerConvolution(Module):
     """Represents a Conformer convolution module as described in
     :cite:t:`https://doi.org/10.48550/arxiv.2005.08100`."""
@@ -176,7 +175,6 @@ class ConformerConvolution(Module):
     def extra_repr(self) -> str:
         """:meta private:"""
         return f"model_dim={self.model_dim}"
-
 
 
 class ConformerBlock(TransformerEncoderLayer):

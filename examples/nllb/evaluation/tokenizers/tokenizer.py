@@ -100,7 +100,6 @@ def tokenize_kmseg(args, src, tgt, ref, hyp):
 
 
 def tokenize_romanian_sennrich(args, src, tgt, ref, hyp):
-
     # tokenize the hypotheses and the references
     norm_ref = f"{args.output_dir}/{args.corpus}-{src}-{tgt}.ref.norm"
     norm_hyp = f"{args.output_dir}/{args.corpus}-{src}-{tgt}.hyp.norm"

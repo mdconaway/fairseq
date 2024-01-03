@@ -323,7 +323,6 @@ def gen_and_reprocess_nbest(args):
             and not args.right_to_left2
             or not rerank1_is_gen
         ):
-
             if args.backwards1 or args.backwards2:
                 if args.backwards_score_dict_dir is not None:
                     bw_dict = args.backwards_score_dict_dir

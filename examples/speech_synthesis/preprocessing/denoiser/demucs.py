@@ -90,7 +90,6 @@ class Demucs(nn.Module):
         rescale=0.1,
         floor=1e-3,
     ):
-
         super().__init__()
         if resample not in [1, 2, 4]:
             raise ValueError("Resample should be 1, 2 or 4.")

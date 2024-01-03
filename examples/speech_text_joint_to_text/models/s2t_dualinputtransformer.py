@@ -386,7 +386,6 @@ class TransformerMultiInputDecoder(FairseqDecoder):
         cross_attentive_loss_with_norm=True,
         cross_attentive_loss_reverse=False,
     ):
-
         super().__init__(dictionary)
         self.spch_decoder = spch_decoder
         self.text_decoder = text_decoder

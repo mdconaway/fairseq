@@ -149,7 +149,6 @@ def align_speech_to_speech(
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser("Aligning FLEURS and FLORES")
     parser.add_argument("--flores-root", type=str, required=True)
     parser.add_argument("--proc-fleurs-dir", type=str, required=True)

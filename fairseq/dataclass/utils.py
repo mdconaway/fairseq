@@ -489,7 +489,6 @@ def overwrite_args_by_name(cfg: DictConfig, overrides: Dict[str, any]):
 
 def merge_with_parent(dc: FairseqDataclass, cfg: DictConfig, remove_missing=False):
     if remove_missing:
-
         if is_dataclass(dc):
             target_keys = set(dc.__dataclass_fields__.keys())
         else:

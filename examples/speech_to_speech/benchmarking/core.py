@@ -94,7 +94,6 @@ class BenchmarkingBase(nn.Module):
     def dump_final_speech_output(
         self, dataset, output_dir, resample_fn, sample_rate, prefix=None
     ):
-
         for i, sample in enumerate(dataset):
             hypo = self.forward(sample)[0]
 

@@ -18,6 +18,7 @@ logger = logging.getLogger("fairseq2.models")
 ConfigT = TypeVar("ConfigT")
 ConfigT_contra = TypeVar("ConfigT_contra", contravariant=True)
 
+
 class ConfigLoader(Generic[ConfigT]):
     """Loads model configurations of type ``ConfigT``."""
 
@@ -34,7 +35,7 @@ class ConfigLoader(Generic[ConfigT]):
         :returns:
             The model configuration of ``vocoder_36``.
         """
-        
+
         # Load the model configuration.
         config = self.base_config
 
@@ -42,9 +43,7 @@ class ConfigLoader(Generic[ConfigT]):
             try:
                 update_dataclass(config, deepcopy(vocoder_36_config))
             except (TypeError, ValueError) as ex:
-                raise RuntimeError(
-                    f"The config cannot be updated."
-                ) from ex
+                raise RuntimeError(f"The config cannot be updated.") from ex
 
         return config
 
@@ -194,9 +193,7 @@ class ModelLoader(Generic[ModelT, ConfigT]):
         try:
             state_dict = checkpoint["model"]
         except KeyError:
-            raise RuntimeError(
-                f"The checkpoint of does not contain a 'model' entry."
-            )
+            raise RuntimeError(f"The checkpoint of does not contain a 'model' entry.")
 
         try:
             model.load_state_dict(state_dict)

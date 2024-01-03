@@ -503,7 +503,6 @@ def download_madar(directory, pre_download_directory):
 
         with open(city_path, "r") as f:
             for line in f:
-
                 id, split, lang, sent = line.strip().split("\t")
                 if sent == "sent":
                     continue

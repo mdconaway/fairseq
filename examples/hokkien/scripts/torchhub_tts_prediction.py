@@ -36,9 +36,19 @@ MODEL_ID_TO_ARGS = {
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model-id", required=True, type=str, help="speech to unit model ids", choices=MODEL_ID_TO_ARGS.keys())
-    parser.add_argument("--input-audio", required=True, type=str, help="input audio file")
-    parser.add_argument("--output-audio", required=True, type=str, help="output audio file")
+    parser.add_argument(
+        "--model-id",
+        required=True,
+        type=str,
+        help="speech to unit model ids",
+        choices=MODEL_ID_TO_ARGS.keys(),
+    )
+    parser.add_argument(
+        "--input-audio", required=True, type=str, help="input audio file"
+    )
+    parser.add_argument(
+        "--output-audio", required=True, type=str, help="output audio file"
+    )
     args = parser.parse_args()
 
     tts_model = torch.hub.load(
@@ -52,5 +62,5 @@ def main():
     sf.write(args.output_audio, waveform.detach().cpu().numpy(), sample_rate)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

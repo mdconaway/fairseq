@@ -793,7 +793,6 @@ class MultilingualDatasetManager(object):
         load_alignments=False,
         truncate_source=False,
     ):
-
         src_datasets = []
         tgt_datasets = []
 

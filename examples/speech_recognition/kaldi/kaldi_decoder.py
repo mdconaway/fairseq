@@ -141,7 +141,6 @@ class KaldiDecoder(object):
         all_encoder_out = [m(**encoder_input) for m in models]
 
         if len(all_encoder_out) > 1:
-
             if "encoder_out" in all_encoder_out[0]:
                 encoder_out = {
                     "encoder_out": sum(e["encoder_out"] for e in all_encoder_out)

@@ -70,9 +70,11 @@ def main():
 
     with open(args.out_quantized_file_path, "w") as fout:
         for i in tqdm(fnames, total=len(fnames)):
-            units: Tensor = unit_extractor.predict(os.path.join(root_dir, i), args.out_layer_number - 1)
+            units: Tensor = unit_extractor.predict(
+                os.path.join(root_dir, i), args.out_layer_number - 1
+            )
             units_list = units.tolist()
-            pred_str = ' '.join(str(x) for x in units_list)
+            pred_str = " ".join(str(x) for x in units_list)
             base_fname = os.path.basename(i).rstrip(args.extension)
             fout.write(f"{base_fname}|{pred_str}\n")
 

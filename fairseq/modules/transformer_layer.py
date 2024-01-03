@@ -335,7 +335,6 @@ class TransformerEncoderLayerBase(nn.Module):
         unexpected_keys,
         error_msgs,
     ):
-
         if self.BT_version:
             self.load_to_BT = True
             old_name = prefix + "self_attn."

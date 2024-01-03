@@ -163,7 +163,7 @@ def do_setup(package_data):
             "subword-nmt",
             "fairscale",
             "overrides",
-            "pandas"
+            "pandas",
         ],
         dependency_links=dependency_links,
         packages=find_packages(

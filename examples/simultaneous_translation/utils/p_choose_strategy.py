@@ -12,7 +12,6 @@ def waitk_p_choose(
     key_padding_mask: Optional[Tensor] = None,
     incremental_state: Optional[Dict[str, Dict[str, Optional[Tensor]]]] = None,
 ):
-
     max_src_len = src_len
     if incremental_state is not None:
         # Retrieve target length from incremental states

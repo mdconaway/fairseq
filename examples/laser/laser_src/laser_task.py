@@ -285,7 +285,6 @@ class LaserTask(LegacyFairseqTask):
         update_epoch_batch_itr=False,
         **kwargs,
     ):
-
         assert isinstance(dataset, OrderedDict)
         assert len(dataset)
         assert isinstance(dataset[next(iter(dataset))], FairseqDataset)

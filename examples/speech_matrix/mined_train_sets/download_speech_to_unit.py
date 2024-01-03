@@ -15,7 +15,6 @@ def download_s2u_manifests(save_root):
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser()
     parser.add_argument("--save-root", type=str, required=True)
     args = parser.parse_args()

@@ -134,7 +134,6 @@ class EmbeddingDatasetWriter(object):
         verbose=False,
         use_feat=False,
     ):
-
         assert os.path.exists(model_fname)
 
         self.model_fname = model_fname
@@ -197,7 +196,6 @@ class EmbeddingDatasetWriter(object):
         return len(self.input_fnames)
 
     def write_features(self):
-
         paths = self.input_fnames
 
         fnames_context = map(
@@ -217,18 +215,15 @@ class EmbeddingDatasetWriter(object):
             writer.write(feat)
 
     def __repr__(self):
-
         return "EmbeddingDatasetWriter ({n_files} files)\n\tinput:\t{input_root}\n\toutput:\t{output_root}\n\tsplit:\t{split})".format(
             n_files=len(self), **self.__dict__
         )
 
 
 if __name__ == "__main__":
-
     args = EmbeddingWriterConfig().parse_args()
 
     for split in args.split:
-
         writer = EmbeddingDatasetWriter(
             input_root=args.input,
             output_root=args.output,

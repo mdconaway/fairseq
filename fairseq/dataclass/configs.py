@@ -1238,7 +1238,9 @@ class EMAConfig(FairseqDataclass):
 class FairseqConfig(FairseqDataclass):
     common: CommonConfig = field(default=CommonConfig)
     common_eval: CommonEvalConfig = field(default=CommonEvalConfig)
-    distributed_training: DistributedTrainingConfig = field(default=DistributedTrainingConfig)
+    distributed_training: DistributedTrainingConfig = field(
+        default=DistributedTrainingConfig
+    )
     dataset: DatasetConfig = field(default=DatasetConfig)
     optimization: OptimizationConfig = field(default=OptimizationConfig)
     checkpoint: CheckpointConfig = field(default=CheckpointConfig)

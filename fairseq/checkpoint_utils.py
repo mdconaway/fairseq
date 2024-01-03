@@ -465,7 +465,6 @@ def load_checkpoint_to_cpu(
             setattr(args, arg_name, arg_val)
 
     if "cfg" in state and state["cfg"] is not None:
-
         # hack to be able to set Namespace in dict config. this should be removed when we update to newer
         # omegaconf version that supports object flags, or when we migrate all existing models
         from omegaconf import __version__ as oc_version
@@ -611,7 +610,6 @@ def load_model_ensemble_and_task(
     is_moe=False,
     build_model_hook=None,
 ):
-
     logger.info("load_model_ensemble_and_task is_moe={}".format(is_moe))
 
     assert state is None or len(filenames) == 1

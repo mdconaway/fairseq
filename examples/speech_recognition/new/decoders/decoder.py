@@ -16,7 +16,6 @@ from .base_decoder import BaseDecoder
 def Decoder(
     cfg: Union[DecoderConfig, FlashlightDecoderConfig], tgt_dict: Dictionary
 ) -> BaseDecoder:
-
     if cfg.type == "viterbi":
         from .viterbi_decoder import ViterbiDecoder
 

@@ -13,7 +13,7 @@ from fairseq.models.wav2vec2 import (
     Wav2Vec2EncoderConfig,
     Wav2Vec2Frontend,
     Wav2Vec2Model,
-#    wav2vec2_arch,
+    #    wav2vec2_arch,
 )
 from fairseq.nn.padding import PaddingMask
 from fairseq.nn.transformer import TransformerEncoder, TransformerNormOrder

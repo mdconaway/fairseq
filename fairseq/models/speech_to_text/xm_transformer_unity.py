@@ -207,7 +207,6 @@ class XMTransformerUnitYModel(XMTransformerModel):
         base_model.multitask_decoders = {}
         n_aux_tasks = len(list(task.multitask_tasks.items()))
         for i, (task_name, task_obj) in enumerate(task.multitask_tasks.items()):
-
             if i < n_aux_tasks - 1:
                 task_decoder = cls.build_multitask_decoder(
                     task_obj.args, task_obj.target_dictionary, args.decoder_embed_dim

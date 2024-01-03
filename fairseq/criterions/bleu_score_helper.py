@@ -9,7 +9,6 @@ EVAL_BLEU_ORDER = 4
 
 
 def maybe_compute_bleu(logging_outputs):
-
     has_bleu = False
     for log in logging_outputs:
         if not log.get("_bleu_sys_len") is None:

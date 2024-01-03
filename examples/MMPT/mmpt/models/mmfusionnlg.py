@@ -859,7 +859,6 @@ class MMBertForNLG(BertPreTrainedModel):
 
             # for each sentence
             for batch_idx in range(batch_size):
-
                 # if we are done with this sentence, add a pad token
                 if done[batch_idx]:
                     assert (

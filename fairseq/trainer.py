@@ -46,7 +46,6 @@ class Trainer(object):
     """
 
     def __init__(self, cfg: FairseqConfig, task, model, criterion, quantizer=None):
-
         if isinstance(cfg, Namespace):
             logger.warning(
                 "argparse.Namespace configuration is deprecated! Automatically converting to OmegaConf"
@@ -1141,7 +1140,6 @@ class Trainer(object):
             logger.debug(f"[{self.get_num_updates()}] done with optimizer step")
 
         except FloatingPointError:
-
             self.consolidate_optimizer()
             self.save_checkpoint(
                 os.path.join(self.cfg.checkpoint.save_dir, "crash.pt"), {}

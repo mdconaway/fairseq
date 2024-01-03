@@ -534,7 +534,6 @@ def download_and_extract(
     completed_extraction={},
     debug=False,
 ):
-
     dl_folder = f"{to_folder}/downloads"
     extract_folder = f"{to_folder}/extracted"
     raw_folder = f"{to_folder}/raw"

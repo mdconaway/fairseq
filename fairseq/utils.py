@@ -41,7 +41,6 @@ except ImportError:
     xm = None
 
 
-
 def _get_torch_version() -> Version:
     try:
         return version.parse(torch.__version__)
@@ -157,7 +156,6 @@ def move_to_cpu(sample, cast_to_fp32=True):
 
 
 def move_to_tpu(sample):
-
     import torch_xla.core.xla_model as xm
 
     device = xm.xla_device()

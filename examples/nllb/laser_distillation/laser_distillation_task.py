@@ -588,7 +588,6 @@ class LaserDistillationTask(LegacyFairseqTask):  # TODO: move to FairseqTask
         grouped_shuffling=False,
         update_epoch_batch_itr=False,
     ):
-
         assert isinstance(dataset, OrderedDict)
         assert len(dataset)
         assert isinstance(dataset[next(iter(dataset))], FairseqDataset)

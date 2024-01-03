@@ -23,7 +23,6 @@ from examples.noisychannel import (
 def score_target_hypo(
     args, a, b, c, lenpen, target_outfile, hypo_outfile, write_hypos, normalize
 ):
-
     print("lenpen", lenpen, "weight1", a, "weight2", b, "weight3", c)
     gen_output_lst, bitext1_lst, bitext2_lst, lm_res_lst = load_score_files(args)
     dict = dictionary.Dictionary()

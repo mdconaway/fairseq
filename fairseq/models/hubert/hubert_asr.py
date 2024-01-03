@@ -303,7 +303,6 @@ class HubertEncoder(FairseqEncoder):
         self.num_updates = num_updates
 
     def forward(self, source, padding_mask, tbc=True, **kwargs):
-
         w2v_args = {
             "source": source,
             "padding_mask": padding_mask,

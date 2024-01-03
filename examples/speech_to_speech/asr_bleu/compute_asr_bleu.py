@@ -120,7 +120,6 @@ def load_eval_data_from_tsv(eval_data_filepath: str):
 
 
 def run_asr_bleu(args):
-
     asr_config = retrieve_asr_config(
         args.lang, args.asr_version, json_path="./asr_model_cfgs.json"
     )

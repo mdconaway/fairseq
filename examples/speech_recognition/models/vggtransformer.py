@@ -361,7 +361,6 @@ class VGGTransformerEncoder(FairseqEncoder):
         transformer_layer_idx = 0
 
         for layer_idx in range(len(self.transformer_layers)):
-
             if isinstance(self.transformer_layers[layer_idx], TransformerEncoderLayer):
                 x, _ = self.transformer_layers[layer_idx](
                     x, encoder_padding_mask, attn_mask
@@ -581,7 +580,6 @@ class TransformerDecoder(FairseqIncrementalDecoder):
         conv_config=DEFAULT_DEC_CONV_CONFIG,
         encoder_output_dim=512,
     ):
-
         super().__init__(dictionary)
         vocab_size = len(dictionary)
         self.padding_idx = dictionary.pad()

@@ -5,7 +5,10 @@ from torch.nn.functional import layer_norm
 import torchaudio
 from torchaudio.transforms import Resample
 from fairseq.models.sequence import SequenceBatch
-from fairseq.models.unit_extractor.wav2vec2_loaders import Wav2Vec2Model, load_wav2vec2_model
+from fairseq.models.unit_extractor.wav2vec2_loaders import (
+    Wav2Vec2Model,
+    load_wav2vec2_model,
+)
 from fairseq.nn.padding import get_seqs_and_padding_mask
 from fairseq.typing import DataType, Device, CPU
 from torch import Tensor, nn
@@ -56,9 +59,7 @@ class UnitExtractor(nn.Module):
         xlsr_sample_rate: int = 16000,
     ) -> Tensor:
         if isinstance(audio, str):
-            waveform, original_sample_rate = torchaudio.load(
-                audio, normalize=True
-            )
+            waveform, original_sample_rate = torchaudio.load(audio, normalize=True)
             transform = Resample(original_sample_rate, xlsr_sample_rate)
             src: Tensor = transform(waveform)
         else:
@@ -71,10 +72,9 @@ class UnitExtractor(nn.Module):
         src = src.to(dtype=self.dtype)
         if self.device != CPU:
             src = move_to_cuda(src, device=self.device)
-        seqs, padding_mask = get_seqs_and_padding_mask({
-            "is_ragged": False,
-            "seqs": src
-        })
+        seqs, padding_mask = get_seqs_and_padding_mask(
+            {"is_ragged": False, "seqs": src}
+        )
         seqs = seqs.view(1, -1)
         seqs = layer_norm(seqs, seqs.shape)
         batch = SequenceBatch(seqs=seqs, padding_mask=padding_mask)
@@ -92,5 +92,5 @@ class UnitExtractor(nn.Module):
     ) -> Tensor:
         vocoder = load_vocoder_36(path=vocoder_path, device=device, dtype=dtype)
         assert isinstance(vocoder, Vocoder)
-        wav = vocoder(units,  lang_list=src_lang, spkr_list=-1, dur_prediction=True)
+        wav = vocoder(units, lang_list=src_lang, spkr_list=-1, dur_prediction=True)
         return wav  # type: ignore[no-any-return]

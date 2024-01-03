@@ -28,7 +28,6 @@ from fairseq.utils import print_r0
 
 
 def main(cfg: DictConfig):
-
     if isinstance(cfg, Namespace):
         cfg = convert_namespace_to_omegaconf(cfg)
 

@@ -99,7 +99,6 @@ class TensorListEntry(ListEntry):
     """
 
     def append(self, value):
-
         if len(self.value) == 0:
             self.value = value
             return
@@ -115,7 +114,6 @@ class TensorListEntry(ListEntry):
 
 
 class FairseqSimulSTAgent(SpeechAgent):
-
     speech_segment_size = 40  # in ms, 4 pooling ratio * 10 ms step size
 
     def __init__(self, args):
@@ -210,7 +208,6 @@ class FairseqSimulSTAgent(SpeechAgent):
         return parser
 
     def load_model_vocab(self, args):
-
         filename = args.model_path
         if not os.path.exists(filename):
             raise IOError("Model file not found: {}".format(filename))

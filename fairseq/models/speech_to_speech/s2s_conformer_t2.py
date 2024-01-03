@@ -509,7 +509,6 @@ class TransformerEncoderNoEmb(FairseqEncoder):
             self.layer_norm = None
 
     def forward(self, x, encoder_padding_mask, return_all_hiddens=False):
-
         encoder_states = []
 
         for layer in self.layers:

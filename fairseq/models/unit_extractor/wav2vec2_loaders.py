@@ -12,8 +12,15 @@ from fairseq.models.vocoder.nn_utils import (
 )
 from fairseq.typing import CPU, META, DataType, Device
 from fairseq.utils import update_dataclass
-from fairseq.models.unit_extractor.wav2vec2_layer_output import Wav2Vec2Config, _xlsr2_1b_v2
-from fairseq.models.wav2vec2 import Wav2Vec2Model, Wav2Vec2EncoderBuilder, Wav2Vec2Builder
+from fairseq.models.unit_extractor.wav2vec2_layer_output import (
+    Wav2Vec2Config,
+    _xlsr2_1b_v2,
+)
+from fairseq.models.wav2vec2 import (
+    Wav2Vec2Model,
+    Wav2Vec2EncoderBuilder,
+    Wav2Vec2Builder,
+)
 from fairseq.models.vocoder.checkpoint import convert_fairseq_checkpoint
 from fairseq.nn.transformer import TransformerNormOrder
 
@@ -21,6 +28,7 @@ logger = logging.getLogger("fairseq2.models")
 
 ConfigT = TypeVar("ConfigT")
 ConfigT_contra = TypeVar("ConfigT_contra", contravariant=True)
+
 
 class ConfigLoader(Generic[ConfigT]):
     """Loads model configurations of type ``ConfigT``."""
@@ -38,7 +46,7 @@ class ConfigLoader(Generic[ConfigT]):
         :returns:
             The model configuration of ``xlsr2_1b_v2``.
         """
-        
+
         # Load the model configuration.
         config = self.base_config
 
@@ -46,9 +54,7 @@ class ConfigLoader(Generic[ConfigT]):
             try:
                 update_dataclass(config, deepcopy(wav2vec2_config))
             except (TypeError, ValueError) as ex:
-                raise RuntimeError(
-                    f"The config cannot be updated."
-                ) from ex
+                raise RuntimeError(f"The config cannot be updated.") from ex
 
         return config
 
@@ -198,9 +204,7 @@ class ModelLoader(Generic[ModelT, ConfigT]):
         try:
             state_dict = checkpoint["model"]
         except KeyError:
-            raise RuntimeError(
-                f"The checkpoint of does not contain a 'model' entry."
-            )
+            raise RuntimeError(f"The checkpoint of does not contain a 'model' entry.")
 
         try:
             model.load_state_dict(state_dict)
@@ -215,7 +219,6 @@ class ModelLoader(Generic[ModelT, ConfigT]):
             reset_non_persistent_buffers(model)
 
         return model
-
 
 
 def convert_wav2vec2_checkpoint(

@@ -267,7 +267,6 @@ class DiscriminativeRerankingNMTTask(FairseqTask):
 
         # no need to shuffle valid/test sets
         if not self.cfg.no_shuffle and split == self.cfg.train_subset:
-
             # need to keep all hypothese together
             start_idx = np.arange(0, len(dataset), self.cfg.mt_beam)
             with data_utils.numpy_seed(self.cfg.seed + epoch):

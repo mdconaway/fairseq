@@ -367,14 +367,12 @@ class Generator(nn.Module):
 @register_model("wav2vec_u", dataclass=Wav2vec_UConfig)
 class Wav2vec_U(BaseFairseqModel):
     def calc_gradient_penalty(self, real_data, fake_data):
-
         b_size = min(real_data.size(0), fake_data.size(0))
         t_size = min(real_data.size(1), fake_data.size(1))
 
         if self.cfg.probabilistic_grad_penalty_slicing:
 
             def get_slice(data, dim, target_size):
-
                 size = data.size(dim)
                 diff = size - target_size
                 if diff <= 0:
@@ -522,7 +520,6 @@ class Wav2vec_U(BaseFairseqModel):
         return probs
 
     def normalize(self, dense_x):
-
         bsz, tsz, csz = dense_x.shape
 
         if dense_x.numel() == 0:

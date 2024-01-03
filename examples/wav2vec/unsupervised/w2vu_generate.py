@@ -494,7 +494,6 @@ def generate(cfg: UnsupGenerateConfig, models, saved_cfg, use_cuda):
 
     lm_score_sum = 0
     if kenlm is not None:
-
         if cfg.unit_lm:
             lm_score_sum = sum(kenlm.score(w) for w in all_hyp_pieces)
         else:

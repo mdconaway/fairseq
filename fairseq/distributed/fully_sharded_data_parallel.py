@@ -117,7 +117,6 @@ def fsdp_enable_wrap(cfg: DistributedTrainingConfig, **kwargs):
         assert cfg.fp16  # memory_efficient_fp16 should imply fp16
     group = dist_utils.get_data_parallel_group()
     if group is None and cfg.distributed_world_size == 1:
-
         group = DummyProcessGroup(rank=0, size=1)
 
     if cfg.fp16:

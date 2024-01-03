@@ -47,6 +47,7 @@ def get_fused_cumsum_sub_one(use_tutel):
 # einsum dimensions: (g)roup, (s)equence, (e)xpert, (m)odel, (c)apacity
 # See https://arxiv.org/pdf/2006.16668.pdf for details.
 
+
 # Based on https://github.com/pytorch/pytorch/pull/40762
 class _AllToAll(torch.autograd.Function):
     @staticmethod

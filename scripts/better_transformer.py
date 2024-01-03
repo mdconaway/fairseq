@@ -42,7 +42,7 @@ def numerical_test(lengths, truth_tensors, test_list):
     for name, out_tensors, rtol, atol in test_list:
         n_failures = 0
         max_diff = 0
-        for (length, truth, out) in zip(lengths, truth_tensors, out_tensors):
+        for length, truth, out in zip(lengths, truth_tensors, out_tensors):
             cut_truth = truth[:length]
             cut_out = out[:length]
             max_diff = max(max_diff, torch.max(torch.abs(cut_truth - cut_out)))

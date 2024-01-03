@@ -57,7 +57,6 @@ def gen_whole_word_mask(args, dictionary):
 
 @register_task("paired_denoising")
 class PairedDenoisingTask(TranslationTask):
-
     LANG_TAG_TEMPLATE = "<lang:{}>"  # Tag for language (target)
 
     @staticmethod

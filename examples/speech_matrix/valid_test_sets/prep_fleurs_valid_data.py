@@ -26,7 +26,6 @@ def gen_valid_data_manifest(
 
 
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser("FLEURS valid set preparation")
     parser.add_argument("--proc-fleurs-dir", type=str, required=True)
     parser.add_argument("--save-root", type=str, required=True)

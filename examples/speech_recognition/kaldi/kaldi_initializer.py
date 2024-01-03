@@ -42,7 +42,6 @@ class KaldiInitializerConfig(FairseqDataclass):
 def create_units(fst_dir: Path, in_labels: str, vocab: Dictionary) -> Path:
     in_units_file = fst_dir / f"kaldi_dict.{in_labels}.txt"
     if not in_units_file.exists():
-
         logger.info(f"Creating {in_units_file}")
 
         with open(in_units_file, "w") as f:
@@ -62,7 +61,6 @@ def create_lexicon(
     in_units_file: Path,
     out_words_file: Path,
 ) -> (Path, Path):
-
     disambig_in_units_file = fst_dir / f"kaldi_dict.{cfg.in_labels}_disambig.txt"
     lexicon_file = fst_dir / f"kaldi_lexicon.{unique_label}.txt"
     disambig_lexicon_file = fst_dir / f"kaldi_lexicon.{unique_label}_disambig.txt"
@@ -132,7 +130,6 @@ def create_lexicon(
 def create_G(
     kaldi_root: Path, fst_dir: Path, lm_arpa: Path, arpa_base: str
 ) -> (Path, Path):
-
     out_words_file = fst_dir / f"kaldi_dict.{arpa_base}.txt"
     grammar_graph = fst_dir / f"G_{arpa_base}.fst"
     if not grammar_graph.exists() or not out_words_file.exists():
@@ -678,7 +675,6 @@ def cli_main(cfg: KaldiInitializerConfig) -> None:
 
 
 if __name__ == "__main__":
-
     logging.root.setLevel(logging.INFO)
     logging.basicConfig(level=logging.INFO)
 

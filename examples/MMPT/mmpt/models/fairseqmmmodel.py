@@ -22,7 +22,6 @@ class FairseqMMModel(BaseFairseqModel):
         return self.mmmodel(*args, **kwargs)
 
     def upgrade_state_dict_named(self, state_dict, name):
-
         super().upgrade_state_dict_named(state_dict, name)
 
         keys_to_delete = []

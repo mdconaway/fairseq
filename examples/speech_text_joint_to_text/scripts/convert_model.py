@@ -20,7 +20,6 @@ def is_update(param_name, module_name):
 
 
 def load_checkpoint(src_cpt):
-
     with PathManager.open(src_cpt, "rb") as f:
         state_src = torch.load(
             f,
@@ -33,7 +32,6 @@ def load_checkpoint(src_cpt):
 
 
 def save_checkpoint(tgt_cpt, states):
-
     with PathManager.open(tgt_cpt, "wb") as f:
         torch.save(
             states,

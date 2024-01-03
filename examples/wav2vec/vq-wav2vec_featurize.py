@@ -77,7 +77,6 @@ class ArgTypes:
 
 class DatasetWriter:
     def __init__(self):
-
         self.args = self.load_config()
         pprint.pprint(self.args.__dict__)
 
@@ -87,7 +86,6 @@ class DatasetWriter:
         return getattr(self.args, attr)
 
     def read_manifest(self, fname):
-
         with open(fname, "r") as fp:
             lines = fp.read().split("\n")
             root = lines.pop(0).strip()
@@ -98,7 +96,6 @@ class DatasetWriter:
         return fnames
 
     def process_splits(self):
-
         if self.args.shard is not None or self.args.num_shards is not None:
             assert self.args.shard is not None and self.args.num_shards is not None
 
@@ -131,10 +128,8 @@ class DatasetWriter:
                     lblf.writelines(lbls)
 
     def iterate(self, files):
-
         data = self.load_data(files)
         for samples in tqdm.tqdm(data, total=len(files) // 32):
-
             for wav, lbl in samples:
                 x = wav.unsqueeze(0).float().cuda()
 
@@ -174,7 +169,6 @@ class DatasetWriter:
         return osp.join(self.output_dir, f"vars.pt")
 
     def load_config(self):
-
         parser = argparse.ArgumentParser("Vector Quantized wav2vec features")
 
         # Model Arguments
@@ -202,7 +196,6 @@ class DatasetWriter:
         return parser.parse_args()
 
     def load_data(self, fnames):
-
         dataset = FilesDataset(fnames, self.args.labels)
         loader = DataLoader(
             dataset, batch_size=32, collate_fn=dataset.collate, num_workers=8
@@ -226,7 +219,6 @@ class DatasetWriter:
         return model
 
     def __call__(self):
-
         self.process_splits()
 
         if hasattr(self.model.feature_extractor, "vars") and (

@@ -18,8 +18,8 @@ logger = logging.getLogger(__name__)
 
 def dump_result(args, sample_id, pred_wav: Tensor, suffix=""):
     torchaudio.save(
-        f"{args.results_path}/{sample_id}{suffix}_pred.wav", 
-        pred_wav[0].to(float32).cpu(), 
+        f"{args.results_path}/{sample_id}{suffix}_pred.wav",
+        pred_wav[0].to(float32).cpu(),
         16000,
     )
 
@@ -45,7 +45,12 @@ def main(args):
         x = LongTensor(d).view(1, -1)
         suffix = ""
         x = utils.move_to_cuda(x) if use_cuda else x
-        wav: Tensor = vocoder(x, lang_list=args.language, spkr_list=args.speaker_id, dur_prediction=args.dur_prediction)
+        wav: Tensor = vocoder(
+            x,
+            lang_list=args.language,
+            spkr_list=args.speaker_id,
+            dur_prediction=args.dur_prediction,
+        )
         dump_result(args, i, wav, suffix=suffix)
 
 

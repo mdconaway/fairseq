@@ -334,7 +334,6 @@ class SpeechTextJointToTextTask(SpeechToTextTask):
         grouped_shuffling=False,
         update_epoch_batch_itr=False,
     ):
-
         if not isinstance(dataset, MultiModalityDataset):
             return super(SpeechTextJointToTextTask, self).get_batch_iterator(
                 dataset,

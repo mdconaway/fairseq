@@ -56,7 +56,6 @@ class AdaptiveSpanTransformer(FairseqLanguageModel):
 
 class AdaptiveSpanDecoder(FairseqIncrementalDecoder):
     def __init__(self, cfg, task):
-
         super().__init__(task.target_dictionary)
 
         self.config = cfg

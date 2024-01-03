@@ -134,7 +134,6 @@ def write_reprocessed(
     target_prefix_frac=None,
     source_prefix_frac=None,
 ):
-
     """writes nbest hypothesis for rescoring"""
     assert not (
         prefix_len is not None and target_prefix_frac is not None
@@ -149,7 +148,6 @@ def write_reprocessed(
     with open(source_outfile, "w") as source_file, open(
         hypo_outfile, "w"
     ) as hypo_file, open(target_outfile, "w") as target_file:
-
         assert len(sources) == len(hypos), "sources and hypos list length mismatch"
         if right_to_left:
             for i in range(len(sources)):
@@ -466,7 +464,6 @@ class BitextOutputFromGen(object):
 
         for i in sorted(pred_source.keys()):
             for j in range(len(pred_hypo[i])):
-
                 self.target_lengths[index] = len(self.hypo[i][j].split())
                 self.source_lengths[index] = len(self.source[i].split())
 

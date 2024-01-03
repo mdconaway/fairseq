@@ -77,7 +77,11 @@ class CodeGenerator(Generator):
             # B x C x T
             repeat_interleaved_x = []
             for i in range(x.size(0)):
-                repeat_interleaved_x.append(torch.repeat_interleave(x[i].unsqueeze(0), dur_out[i].view(-1), dim=2))
+                repeat_interleaved_x.append(
+                    torch.repeat_interleave(
+                        x[i].unsqueeze(0), dur_out[i].view(-1), dim=2
+                    )
+                )
             x = torch.cat(repeat_interleaved_x)
         upsampled_spkr = []
         upsampled_lang = []

@@ -404,7 +404,7 @@ class Wav2VecEncoder(FairseqEncoder):
         temp_w2v_args_model = w2v_args.model
         if isinstance(temp_w2v_args_task, Namespace):
             temp_w2v_args_task = convert_namespace_to_omegaconf(temp_w2v_args_task)
-        
+
         if isinstance(temp_w2v_args_model, Namespace):
             temp_w2v_args_model = convert_namespace_to_omegaconf(temp_w2v_args_model)
 
@@ -495,7 +495,6 @@ class Wav2VecEncoder(FairseqEncoder):
         self.num_updates = num_updates
 
     def forward(self, source, padding_mask, **kwargs):
-
         w2v_args = {
             "source": source,
             "padding_mask": padding_mask,

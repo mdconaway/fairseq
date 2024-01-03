@@ -24,7 +24,6 @@ class BaseJob(object):
 
 
 class LocalJob(BaseJob):
-
     CMD_CONFIG = {
         "local_single": [
             "fairseq-train",

@@ -27,7 +27,6 @@ class SimulTransTextAgentJA(TextAgent):
     """
 
     def __init__(self, args):
-
         # Whether use gpu
         self.gpu = getattr(args, "gpu", False)
 
@@ -53,7 +52,6 @@ class SimulTransTextAgentJA(TextAgent):
             return tensor.cpu()
 
     def load_model_vocab(self, args):
-
         filename = args.model_path
         if not os.path.exists(filename):
             raise IOError("Model file not found: {}".format(filename))
@@ -160,7 +158,6 @@ class SimulTransTextAgentJA(TextAgent):
             return token
 
     def policy(self, states):
-
         if not getattr(states, "encoder_states", None):
             # No encoder states, read a token first
             return READ_ACTION

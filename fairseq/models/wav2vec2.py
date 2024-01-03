@@ -5,14 +5,39 @@ import math
 import torch
 import torch.nn as nn
 from torch import Tensor
-from torch.nn import Module, Conv1d, Dropout, GroupNorm, Parameter, GELU, Module, Sequential, SiLU
+from torch.nn import (
+    Module,
+    Conv1d,
+    Dropout,
+    GroupNorm,
+    Parameter,
+    GELU,
+    Module,
+    Sequential,
+    SiLU,
+)
 from torch.nn.functional import cross_entropy, layer_norm, group_norm, gumbel_softmax
 from torch.nn.utils.weight_norm import remove_weight_norm, weight_norm
 from fairseq.models.conformer import ConformerBlock, ConformerConvolution
 from fairseq.models.feature_extractor import SequenceFeatureExtractor
 from fairseq.models.transformer import TransformerFrontend
 from fairseq.models.sequence import SequenceBatch
-from fairseq.nn.transformer import SDPA, RelativePositionSDPA, MultiheadAttention, StandardMultiheadAttention, FeedForwardNetwork, StandardFeedForwardNetwork, AttentionMask, TransformerEncoderLayer, TransformerNormOrder, TransformerEncoder, AttentionMaskFactory, LayerNormFactory, create_standard_layer_norm, create_default_sdpa
+from fairseq.nn.transformer import (
+    SDPA,
+    RelativePositionSDPA,
+    MultiheadAttention,
+    StandardMultiheadAttention,
+    FeedForwardNetwork,
+    StandardFeedForwardNetwork,
+    AttentionMask,
+    TransformerEncoderLayer,
+    TransformerNormOrder,
+    TransformerEncoder,
+    AttentionMaskFactory,
+    LayerNormFactory,
+    create_standard_layer_norm,
+    create_default_sdpa,
+)
 from fairseq.nn.incremental_state import IncrementalStateBag
 from fairseq.nn.normalization import LayerNorm, StandardLayerNorm
 from fairseq.nn.ops import repeat_interleave

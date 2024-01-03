@@ -115,7 +115,6 @@ def test_xformers_blocksparse_parity(
     seq_len,
     num_heads,
 ):
-
     xformers_att_config = '{"name": "scaled_dot_product"}'
     xformers_blocksparse_blocksize = 16
     xformers_blocksparse_layout = torch.ones(
@@ -228,7 +227,6 @@ def test_xformers_single_forward_parity(
     seq_len,
     num_heads,
 ):
-
     xformers_att_config = '{"name": "scaled_dot_product"}'
 
     attn_mask = (

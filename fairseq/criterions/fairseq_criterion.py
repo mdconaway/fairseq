@@ -152,7 +152,6 @@ class MoECriterionConfig(FairseqDataclass):
 
 
 class MoECriterion(FairseqCriterion):
-
     moe_logging_keys = [
         "overflow_expert1",  # average % of overflowed tokens from 1st expert
         "overflow_expert2",  # average % of overflowed tokens from 2nd expert

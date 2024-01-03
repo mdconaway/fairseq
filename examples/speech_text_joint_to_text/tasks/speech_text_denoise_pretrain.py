@@ -586,7 +586,6 @@ class SpeechTextJointDenoisingPreTask(PairedDenoisingTask):
         grouped_shuffling=False,
         update_epoch_batch_itr=False,
     ):
-
         assert isinstance(dataset, MultiModalityDataset)
         if len(dataset.id_to_mode) == 1:
             max_positions = dataset.max_positions[0]

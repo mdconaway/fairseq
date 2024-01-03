@@ -54,7 +54,6 @@ class MultiLingualAlignedCorpusReader(object):
         zero_shot=False,
         detok=True,
     ):
-
         self.empty_line_flag = "NULL"
         self.corpus_path = corpus_path
         self.delimiter = delimiter

@@ -226,7 +226,7 @@ class RawAudioDataset(FairseqDataset):
     def _get_mask_indices_dims(self, size, padding=0, dilation=1):
         if size not in self._features_size_map:
             L_in = size
-            for (_, kernel_size, stride) in self._conv_feature_layers:
+            for _, kernel_size, stride in self._conv_feature_layers:
                 L_out = L_in + 2 * padding - dilation * (kernel_size - 1) - 1
                 L_out = 1 + L_out // stride
                 L_in = L_out

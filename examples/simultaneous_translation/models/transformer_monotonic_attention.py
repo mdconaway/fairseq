@@ -203,7 +203,6 @@ class TransformerMonotonicDecoder(TransformerDecoder):
         p_choose = torch.tensor([1.0])
 
         for i, layer in enumerate(self.layers):
-
             x, attn, _ = layer(
                 x=x,
                 encoder_out=encoder_outs,
