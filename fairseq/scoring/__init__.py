@@ -31,9 +31,7 @@ class BaseScorer(ABC):
         pass
 
 
-_build_scorer, register_scorer, SCORER_REGISTRY, _ = registry.setup_registry(
-    "--scoring", default="bleu"
-)
+_build_scorer, register_scorer, SCORER_REGISTRY, _ = registry.setup_registry("--scoring", default="bleu")
 
 
 def build_scorer(choice, tgt_dict):
